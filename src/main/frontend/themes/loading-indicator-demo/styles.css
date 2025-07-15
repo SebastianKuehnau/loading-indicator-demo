@@ -1,2 +1,31 @@
 @import url('./main-layout.css');
-@import url('./views/demo-view-view.css');
+@import url('./views/demo-view.css');
+
+.v-loading-indicator {
+    position: fixed; /* Occupy whole screen even if scrolled */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* Animated with delay toprevent flashing,
+       fadein-effect is defined below */
+    animation: fadein 0.3s ease-in-out 0.1s normal 1 both;
+    z-index: 2147483647;
+}
+
+@keyframes fadein {
+    0% {
+        background: rgba(0,0,0,0);
+        backdrop-filter: blur(0px);          /* Blur-Effect */
+        -webkit-backdrop-filter: blur(0px);  /* Safari-Support */
+    }
+    100% {
+        background: rgba(0,0,0,0.5);         /* Darkens the UI */
+        backdrop-filter: blur(5px);          /* Blur-Effect */
+        -webkit-backdrop-filter: blur(5px);  /* Safari-Support */
+        background-image: url('loading.gif');
+        background-size: 50px 50px;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+}
